@@ -22,7 +22,7 @@ const url = `mongodb+srv://shreya_nawani:Onecallaway11*@cluster0.vxw1w.mongodb.n
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser()); //parse cookie
 app.use(express.static("views"));
 
 app.set("view engine", "ejs");
