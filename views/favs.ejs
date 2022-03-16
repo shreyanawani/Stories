@@ -26,6 +26,10 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"
   ></script>
+  <script
+  src="https://kit.fontawesome.com/2c2136c0e3.js"
+  crossorigin="anonymous"
+></script>
 
     <link rel="stylesheet" href="/style.css" />
 </head>
@@ -33,8 +37,6 @@
   <%- include ('./partials/header.ejs'); %>
  
     <div class="navv">STORIES
-    
-      <!-- <div class="side"> -->
         <form class="favv" action="/posts/stories">
           <button class="btn btnn">ALL POSTS</button>
         </form>
@@ -45,19 +47,15 @@
           <%if(item.user_id===userr.username){%>
         <div class="story " id="<%=item._id%>">
           <div class="topnav">
-            <div class="user"><%=item.user%></div>
-
+            <div class="user"><%=moment(item.date).format('MMMM Do YYYY')%></div>
             <form
               action="/posts/jsDelete?id=<%=item._id%>&cloudinary_id=<%=item.cloudinary_id%>"
               method="post"
-              class="items"
-            >
-              <!-- <input type="submit" value="X" /> -->
+              class="items">
               <button class="btn">X</button>
             </form>
           </div>
           <div class="image">
-            <!-- <%=item.image%> -->
             <img src="<%=item.uploaded_file%>" />
           </div>
           <div class="caption"><%=item.caption%></div>
@@ -66,16 +64,11 @@
               action="/like?id=<%=item._id%>&cloudinary_id=<%=item.cloudinary_id%>"
               class="likes"
             >
-              <!-- <input
-                type="submit"
-                value="X"
-                id="<%=item.cloudinary_id%>"
-              /><%=item.likes%> -->
               <button
                 id="<%=item.cloudinary_id%>"
-                class="<%= item.likes>0? 'foo' : 'moo' %>"
+                class="emo_btn  <%= item.likes>0? 'far fa-heart' : 'fas fa-heart' %>"
               >
-                <%=item.likes%>
+               
               </button>
             </form>
             <!-- <i class="fa-solid fa-heart"></i><%=item.likes%> -->
@@ -84,7 +77,6 @@
         <%}%>
         <%})%>
       </div>
-      <!-- <div class="side"> -->
      
         <script src="/favScript.js"></script>
 

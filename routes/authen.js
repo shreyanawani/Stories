@@ -17,7 +17,4 @@ Router.post(
     failureFlash: true,
   })
 );
-// Router.get("*", storyController.defaultRoute);
-
-// input type=file name='image'
 module.exports = Router;

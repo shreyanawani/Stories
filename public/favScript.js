@@ -7,7 +7,7 @@ for (let i = 0; i < ipbtn.length; i++) {
     const idd = params.get("id");
     const ip = document.getElementById(idd);
     ip.remove();
-    console.log(params.get("cloudinary_id"));
+
     const data = {
       id: params.get("id"),
       cid: params.get("cloudinary_id"),
@@ -24,12 +24,10 @@ for (let i = 0; i < ipbtn.length; i++) {
 
 const iplikes = document.querySelectorAll(".likes");
 for (let i = 0; i < iplikes.length; i++) {
-  console.log(iplikes[i]);
-
   iplikes[i].addEventListener("submit", function (e) {
     e.preventDefault();
     const params = new URL(iplikes[i].action).searchParams;
-    console.log(params);
+
     const idd = params.get("id");
     const ip = document.getElementById(idd);
     ip.remove();
@@ -39,7 +37,6 @@ for (let i = 0; i < iplikes.length; i++) {
       headers: {
         "Content-Type": "application/json",
       },
-      // body: JSON.stringify(data),
     });
   });
 }

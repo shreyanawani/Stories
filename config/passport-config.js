@@ -5,24 +5,17 @@ const User = require("../model/user");
 
 passport.use(
   new LocalStrategy(function verify(username, password, done) {
-    //{ usernameField: "username" }),
-    // const hashedPassword = bcrypt.hash(password, 10);
     User.findOne({ username: username }, async function (err, user) {
       if (err) {
-        console.log("error in finding user");
         return done(err);
       }
       if (!user) {
-        // console.log(hashedPassword, user.password);
-        console.log("Invalid credentials");
         return done(null, false, { message: "Invalid credentials" });
       } else {
         await bcrypt.compare(password, user.password, function (err, res) {
           if (!res) {
-            console.log("in");
             return done(null, false, { message: "Invalid credentials" });
           } else if (err) {
-            console.log("Invalid");
             return done(err);
           } else return done(null, user);
         });
@@ -41,14 +34,12 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
   User.findById(id, function (err, user) {
     if (err) {
-      console.log("error in finding user");
       return done(err);
     } else return done(null, user);
   });
 });
 
 passport.checkAuthentication = function (req, res, next) {
-  //   console.log(req);
   //if user is signed in,then pass on the req to next function(controller's action)
   if (req.isAuthenticated()) {
     return next();
@@ -61,9 +52,6 @@ passport.checkAuthentication = function (req, res, next) {
 passport.setAuthenticatedUser = function (req, res, next) {
   if (req.isAuthenticated()) {
     //req.User has current signed in user
-    // console.log(req);
-    // console.log(req.user, "a");
-    // console.log(req.User, "b");
     res.locals.userr = req.user;
   }
   next();

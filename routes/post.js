@@ -6,7 +6,6 @@ const cloudinary = require("../utils/cloudinary");
 const upload = require("../utils/multer");
 const passport = require("passport");
 
-// Router.get("/", postController.viewPost);
 Router.get(
   "/viewFavoritePosts",
   passport.checkAuthentication,
@@ -19,9 +18,8 @@ Router.post(
   postController.newPost
 );
 Router.get("/stories", passport.checkAuthentication, postController.viewPost);
-// Router.post("/del/:id", postController.delPost);
+
 Router.post("/apisend", passport.checkAuthentication, postController.delId);
 Router.post("/like/:id", passport.checkAuthentication, postController.likePost);
-// Router.get("*", postController.defaultRoute);
-// input type=file name='image'
+
 module.exports = Router;

@@ -27,10 +27,10 @@
       crossorigin="anonymous"
     ></script>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    <script
+      src="https://kit.fontawesome.com/2c2136c0e3.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="/style.css" />
 
     <title>ChatCord App</title>
@@ -53,16 +53,15 @@
               enctype="multipart/form-data"
             >
               <div class="form-group">
-                <label for="name">Name</label><br />
+                <label for="name">Date</label><br />
                 <input
-                  type="text"
+                  type="date"
                   name="name"
                   required
                   class="form-control"
                 /><br />
               </div>
               <div class="form-group">
-                <!-- <input type="text" name="ima" /><br /> -->
                 <label for="caption">Caption</label><br />
                 <input
                   type="text"
@@ -87,23 +86,22 @@
       </div>
       <div class="stories">
         <% posts.forEach(function func(item){%>
-        <!-- <%=locals.userr%> -->
         <%if(item.user_id===userr.username){%>
         <div class="story" id="<%=item._id%>">
           <div class="topnav">
-            <div class="user"><%=item.user%></div>
+            <div class="user">
+              <%=moment(item.date).format('MMMM Do YYYY')%>
+            </div>
 
             <form
               action="/posts/jsDelete?id=<%=item._id%>&cloudinary_id=<%=item.cloudinary_id%>"
               method="post"
               class="items"
             >
-              <!-- <input type="submit" value="X" /> -->
               <button class="btn">X</button>
             </form>
           </div>
           <div class="image">
-            <!-- <%=item.image%> -->
             <img src="<%=item.uploaded_file%>" />
           </div>
           <div class="caption"><%=item.caption%></div>
@@ -112,30 +110,24 @@
               action="/posts/like?id=<%=item._id%>&cloudinary_id=<%=item.cloudinary_id%>"
               class="likes"
             >
-              <!-- <input
-                type="submit"
-                value="X"
-                id="<%=item.cloudinary_id%>"
-              /><%=item.likes%> -->
               <button
                 id="<%=item.cloudinary_id%>"
-                class="<%= item.likes>0? 'foo' : 'moo' %>"
-              >
-                <%=item.likes%>
-              </button>
+                class="emo_btn far fa-heart <%= item.likes>0? 'far fa-heart' : 'fas fa-heart' %>"
+              ></button>
             </form>
-            <!-- <i class="fa-solid fa-heart"></i><%=item.likes%> -->
           </div>
         </div>
         <%}%> <%})%>
       </div>
     </div>
-    <script src="/script.js"></script>
+
     <!-- JavaScript Bundle with Popper -->
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <script src="/script.js"></script>
   </body>
 </html>

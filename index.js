@@ -1,5 +1,4 @@
 const express = require("express");
-// const { route } = require("express/lib/application");
 const app = express();
 const mongoose = require("mongoose");
 const router = express.Router();
@@ -12,12 +11,12 @@ const path = require("path");
 const flash = require("connect-flash");
 
 //used for session cookie
+const moment = require("moment");
+app.locals.moment = require("moment");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const passport = require("passport");
 const passportLocal = require("./config/passport-config");
-
-// console.log(process.env);
 const url = `mongodb+srv://shreya_nawani:Onecallaway11*@cluster0.vxw1w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 app.use(express.json());
@@ -49,22 +48,8 @@ app.get("*", (req, res) => {
   res.render("err");
 });
 
-// const Storage = multer.diskStorage({
-//   destination: "./views/uploads/",
-//   filename: (req, res, cb) => {
-//     cb(
-//       null,
-//       file.fieldname + "_" + Date.now() + path.extname(file.originalname)
-//     ); //
-//   },
-// });
-// const upload = multer({
-//   storage: Storage,
-// }).single("file");
-
 const connectionParams = {
   useNewUrlParser: true,
-  //   useCreateIndex: true,
   useUnifiedTopology: true,
 };
 
