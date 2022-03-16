@@ -1,0 +1,140 @@
+.navv {
+  /* text-align: center; */
+  background-color: black;
+  height: 70px;
+  color: aliceblue;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 80px; /*?*/
+  font-size: 30px;
+  position: sticky;
+  top: 0;
+}
+.side-margin {
+  width: 20%;
+}
+.containerr {
+  display: flex;
+  height: auto;
+  min-height: 100%;
+  /* align-items: flex-start; */
+  /* flex-basis: 100%; */
+  /* position: relative; */
+  /* height: 100vh; */
+  /* background-color: #545454; */
+  /* display: block; */
+  /* overflow: auto; */
+}
+.topnav {
+  display: flex;
+}
+.topnav .user {
+  width: 100%;
+}
+.side {
+  background-color: #e4e4e4;
+}
+.image {
+  max-height: 50em;
+  max-height: 50em;
+  overflow: hidden;
+}
+img {
+  max-height: 100%;
+  /* object-fit: contain; */
+  max-width: 100%;
+}
+.side_bar {
+  position: sticky;
+  /* position: -webkit-sticky; */
+  /* flex-grow: 1; */
+  /* margin: 100px 100px; */
+  /* height: 100vh; */
+
+  margin: auto;
+  /* border: 3px solid #801d1d; */
+
+  top: 20%;
+  /* width: 60%; */
+  text-align: center;
+  background-color: #e4e4e4;
+}
+.favorites {
+  display: block; /*for margin auto to work set display block*/
+  margin: auto;
+  margin-top: 10%;
+  margin-bottom: 20%;
+  width: 200px;
+  height: 40px;
+}
+.favv {
+  background-color: #e4e4e4;
+  display: inline;
+}
+input.form-control {
+  width: 80%;
+  margin: auto;
+  margin-top: -10px;
+  margin-bottom: 5px;
+}
+
+.form-group {
+  margin-bottom: -20px;
+}
+.add {
+  margin-top: 10px;
+  /* border: 3px solid rgb(233, 233, 233); */
+}
+label {
+  display: block;
+  margin: auto;
+  font-size: medium;
+  margin-bottom: -10px;
+  width: 80%;
+  text-align: left;
+}
+.btnn {
+  margin-top: 15px;
+  position: absolute;
+  right: 20px;
+}
+.stories {
+  /* flex-grow: 1; */
+  /* margin-left: 20%; */
+  width: 60%;
+  margin: auto;
+  /* border: 3px solid #73ad21; */
+}
+.submission {
+  margin-top: 30px;
+  width: 80%;
+}
+.story {
+  margin: 40px;
+  border: 3px solid #e9e9e9;
+}
+.caption {
+  margin: 2px;
+  height: 30px;
+  font-size: larger;
+  border-bottom: 3px solid #e9e9e9;
+}
+.like {
+  margin: 2px;
+  /* border: 3px solid #e9e9e9; */
+}
+.foo {
+  color: red;
+}
+.moo {
+  color: black;
+}
+
+@media screen and (max-width: 900px) {
+  .containerr {
+    flex-direction: column;
+  }
+  .stories {
+    width: auto;
+  }
+}

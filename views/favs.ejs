@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"
+  />
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <%- include ('./partials/header.ejs'); %>
+ 
+    <div class="navv">STORIES
+    
+      <!-- <div class="side"> -->
+        <form class="favv" action="/posts/stories">
+          <button class="btn btnn">ALL POSTS</button>
+        </form>
+      </div>
+        <div class="containerr">
+      <div class="stories">
+        <% posts.forEach(function func(item){%> 
+          <%if(item.user_id===userr.username){%>
+        <div class="story " id="<%=item._id%>">
+          <div class="topnav">
+            <div class="user"><%=item.user%></div>
+
+            <form
+              action="/posts/jsDelete?id=<%=item._id%>&cloudinary_id=<%=item.cloudinary_id%>"
+              method="post"
+              class="items"
+            >
+              <!-- <input type="submit" value="X" /> -->
+              <button class="btn">X</button>
+            </form>
+          </div>
+          <div class="image">
+            <!-- <%=item.image%> -->
+            <img src="<%=item.uploaded_file%>" />
+          </div>
+          <div class="caption"><%=item.caption%></div>
+          <div class="like">
+            <form
+              action="/like?id=<%=item._id%>&cloudinary_id=<%=item.cloudinary_id%>"
+              class="likes"
+            >
+              <!-- <input
+                type="submit"
+                value="X"
+                id="<%=item.cloudinary_id%>"
+              /><%=item.likes%> -->
+              <button
+                id="<%=item.cloudinary_id%>"
+                class="<%= item.likes>0? 'foo' : 'moo' %>"
+              >
+                <%=item.likes%>
+              </button>
+            </form>
+            <!-- <i class="fa-solid fa-heart"></i><%=item.likes%> -->
+          </div>
+        </div>
+        <%}%>
+        <%})%>
+      </div>
+      <!-- <div class="side"> -->
+     
+        <script src="/favScript.js"></script>
+
+</body>
+</html>

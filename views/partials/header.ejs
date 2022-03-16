@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- <div class="container-fluid"> -->
+  <!-- <div class="navbar-header"> -->
+  <% if(locals.userr){ %>
+  <div class="navbar-brand"><%=userr.username%></div>
+  <%}%>
+
+  <div class="navbar-nav">
+    <% if(locals.userr){ %>
+    <a class="nav-link nav-item" href="/logOut">Log Out</a>
+    <%}%> <% if(!locals.userr){%>
+    <a class="nav-link nav-item" href="/signin">Sign In</a>
+    <a class="nav-link nav-item" href="/">Sign Up</a>
+    <%}%>
+  </div>
+</nav>
